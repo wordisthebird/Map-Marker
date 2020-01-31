@@ -10,6 +10,9 @@ import Firebase
 
 class ViewController: UIViewController {
     
+    let arImage = UIImageView(image: UIImage(named: "logo_pdf")!)
+    let splashView = UIView()
+    
     var locationsList: [GeoPoint] = []
     var counter = 0
     
@@ -21,12 +24,54 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadDataFromFirebase()
+        splashView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+        
+        view.addSubview(splashView)
+        splashView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+        
+        arImage.contentMode = .scaleAspectFit
+        splashView.addSubview(arImage)
+        arImage.frame = CGRect(x: splashView.frame.midX - 50, y: splashView.frame.midY - 50, width: 100, height: 100)
+        
+        
         
     }
     
-    func loadDataFromFirebase() {
+    override func viewDidAppear(_ animated: Bool) {
         
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2){
+            self.scaleDownAnimation()
+        }
+    }
+    
+    func scaleDownAnimation(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.arImage.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            
+            
+        }){ (success) in
+            self.scaleUpAnimation()
+            
+            self.loadDataFromFirebase()
+        }
+    }
+    
+    func scaleUpAnimation(){
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseIn,
+                       animations: {
+                        self.arImage.transform = CGAffineTransform(scaleX: 50, y: 50)
+                        
+        }) {(success)in
+            self.removeSpashScreen()
+        }
+    }
+    
+    func removeSpashScreen(){
+        
+        splashView.removeFromSuperview()
+    }
+    
+    func loadDataFromFirebase() {
         print("Firebase")
         let db = Firestore.firestore()
         db.collection("Restaurants").getDocuments { (snapshot, err) in
@@ -45,9 +90,21 @@ class ViewController: UIViewController {
                     self.coordinates.append(coordinate)
                     self.locationsList.append(coordinate)
                 }
+                
+                for x in self.names{
+                    print("Names: ",x)
+                }
+                
+                for y in self.coordinates{
+                    print("Coordinates: ",y)
+                }
+                
+                for z in self.locationsList{
+                    print("Coordinates: ",z)
+                }
+                
+                
                 self.secondfunction()
-                
-                
             }
         }
     }
@@ -60,7 +117,7 @@ class ViewController: UIViewController {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         mapView.centerCoordinate = CLLocationCoordinate2D(latitude: 54.2710154, longitude: -8.4715214)
-        mapView.zoomLevel = 14
+        mapView.zoomLevel = 13
         mapView.delegate = self
         view.addSubview(mapView)
         
@@ -68,7 +125,7 @@ class ViewController: UIViewController {
         for coordinate in locationsList {
             let location: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
             let point = MGLPointAnnotation()
-            point.title = "Click here for our menu"
+            point.title = "Tap here for our menu"
             point.coordinate = location
             pointAnnotations.append(point)
         }
@@ -81,7 +138,7 @@ class ViewController: UIViewController {
         
         for x in names{
             let url1 = URL(string: "https://mapmarkersspace.s3-eu-west-1.amazonaws.com/\(x).jpg")
-            print("URL: ", url1)
+            //print("URL: ", url1)
             let data1 = try? Data(contentsOf: url1!) //make sure your image in this url does exist
             //self.imagesOne = UIImage(data: data1!)
             self.images.append(UIImage(data: data1!)!)
@@ -104,16 +161,28 @@ extension ViewController: MGLMapViewDelegate {
     
     // MGLMapViewDelegate method for adding static images to point annotations
     func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
-        
-        
         let annotationImage: MGLAnnotationImage
-        let annotationImageCocktail = mapView.dequeueReusableAnnotationImage(withIdentifier: names[counter])
+        print("Problem here: ",names[counter])
+        
+        
+        
+        //let annotationImageCocktail = images[counter]
+        
+        let annotationImageCocktail = mapView.dequeueReusableAnnotationImage(withIdentifier: "camera")
+        
+        //let annotationImageCocktail = mapView.dequeueReusableAnnotationImage(withIdentifier: names[counter])
         
         print()
         print("HERE: ",self.names[counter])
         print()
         
-        annotationImage = annotationImageCocktail ?? MGLAnnotationImage(image: UIImage(named: names[counter])!, reuseIdentifier: names[counter])
+        //annotationImage = annotationImageCocktail ?? MGLAnnotationImage(image: UIImage()
+        
+        //annotationImage = annotationImageCocktail ?? MGLAnnotationImage(image: UIImage(named: "camera"), reuseIdentifier: names[counter])
+        
+        annotationImage = annotationImageCocktail ?? MGLAnnotationImage(image: UIImage(named: "camera")!, reuseIdentifier: "camera")
+        
+        //annotationImage = annotationImageCocktail ?? MGLAnnotationImage(image: UIImage(named: "camera")!, reuseIdentifier: names[counter])
         
         counter += 1
         return annotationImage
