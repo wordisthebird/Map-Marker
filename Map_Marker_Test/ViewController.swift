@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     var locationsList: [GeoPoint] = []
     var counter = 0
     
-    
     //arrays of names and descriptions
     var names:[String] = []
     var coordinates: [GeoPoint] = []
@@ -137,7 +136,7 @@ class ViewController: UIViewController {
         //https://mapmarkersspace.s3-eu-west-1.amazonaws.com/belfry.png
         
         for x in names{
-            let url1 = URL(string: "https://mapmarkersspace.s3-eu-west-1.amazonaws.com/\(x).jpg")
+            let url1 = URL(string: "https://mapmarkersspace.s3-eu-west-1.amazonaws.com/\(x).png")
             //print("URL: ", url1)
             let data1 = try? Data(contentsOf: url1!) //make sure your image in this url does exist
             //self.imagesOne = UIImage(data: data1!)
@@ -164,25 +163,19 @@ extension ViewController: MGLMapViewDelegate {
         let annotationImage: MGLAnnotationImage
         print("Problem here: ",names[counter])
         
-        
-        
-        //let annotationImageCocktail = images[counter]
-        
-        let annotationImageCocktail = mapView.dequeueReusableAnnotationImage(withIdentifier: "camera")
-        
-        //let annotationImageCocktail = mapView.dequeueReusableAnnotationImage(withIdentifier: names[counter])
+        let annotationImageCocktail = mapView.dequeueReusableAnnotationImage(withIdentifier: names[counter])
         
         print()
         print("HERE: ",self.names[counter])
         print()
         
-        //annotationImage = annotationImageCocktail ?? MGLAnnotationImage(image: UIImage()
+        //working one
+        //annotationImage = annotationImageCocktail ?? MGLAnnotationImage(image: UIImage(named: "camera")!, reuseIdentifier: "camera")
+        let img = images[counter]
         
-        //annotationImage = annotationImageCocktail ?? MGLAnnotationImage(image: UIImage(named: "camera"), reuseIdentifier: names[counter])
+        //return MGLAnnotationImage(image: img, reuseIdentifier: "car")
         
-        annotationImage = annotationImageCocktail ?? MGLAnnotationImage(image: UIImage(named: "camera")!, reuseIdentifier: "camera")
-        
-        //annotationImage = annotationImageCocktail ?? MGLAnnotationImage(image: UIImage(named: "camera")!, reuseIdentifier: names[counter])
+        annotationImage = annotationImageCocktail ?? MGLAnnotationImage(image: img, reuseIdentifier: names[counter])
         
         counter += 1
         return annotationImage

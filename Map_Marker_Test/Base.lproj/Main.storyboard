@@ -32,14 +32,26 @@
                     <view key="view" contentMode="scaleToFill" id="XkK-OP-8Gr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boom! we made it" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGW-mD-ZCR">
+                                <rect key="frame" x="138.5" y="410.5" width="137" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="uGW-mD-ZCR" firstAttribute="centerX" secondItem="XkK-OP-8Gr" secondAttribute="centerX" id="Pv8-wd-gKH"/>
+                            <constraint firstItem="uGW-mD-ZCR" firstAttribute="centerY" secondItem="XkK-OP-8Gr" secondAttribute="centerY" id="ap8-PS-Czu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="9sc-Jv-MHz"/>
                     </view>
                     <navigationItem key="navigationItem" id="Gf4-f8-2id"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxo-5e-IaR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909" y="-9"/>
+            <point key="canvasLocation" x="962" y="84"/>
         </scene>
     </scenes>
 </document>
