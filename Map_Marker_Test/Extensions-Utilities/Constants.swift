@@ -13,4 +13,7 @@ struct Images{
     static let flipside = UIImage(named: "FlipsideLarge")
     static let belfry = UIImage(named: "belfry_large")
     static let jalan = UIImage(named: "jalan_jalan_large")
+    static let ealabhan = UIImage(named: "Eala Bhan")
+    
+    //ealabhan
 }

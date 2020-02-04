@@ -18,6 +18,9 @@
                         <viewLayoutGuide key="safeArea" id="OQ8-Qh-w1W"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Restaurants" image="food" id="dpq-CV-GBQ"/>
+                    <connections>
+                        <segue destination="lNv-1z-NVG" kind="show" identifier="goToNext" id="Hev-jf-2hL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fHd-Ei-a8w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,4 +108,7 @@
         <image name="food" width="30" height="30"/>
         <image name="home" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Hev-jf-2hL"/>
+    </inferredMetricsTieBreakers>
 </document>

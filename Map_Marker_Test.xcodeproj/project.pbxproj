@@ -14,7 +14,7 @@
 		708B49E123D8C06B00BE0441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 708B49E023D8C06B00BE0441 /* Assets.xcassets */; };
 		708B49E423D8C06B00BE0441 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 708B49E223D8C06B00BE0441 /* LaunchScreen.storyboard */; };
 		708B49EF23D8D68E00BE0441 /* clustering.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 708B49ED23D8D68E00BE0441 /* clustering.xcassets */; };
-		70E4E90C23E1E6E00017E1A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70E4E90B23E1E6E00017E1A7 /* GoogleService-Info.plist */; };
+		70A4606923E9D530008DBA35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70A4606823E9D530008DBA35 /* GoogleService-Info.plist */; };
 		70E7254D23E8DEF90099C665 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E7254C23E8DEF90099C665 /* RestaurantViewController.swift */; };
 		70E7255023E8E15C0099C665 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E7254F23E8E15C0099C665 /* UIView+Ext.swift */; };
 		70E7255223E8E3580099C665 /* restaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E7255123E8E3580099C665 /* restaurantCell.swift */; };
@@ -34,7 +34,7 @@
 		708B49E323D8C06B00BE0441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		708B49E523D8C06B00BE0441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		708B49ED23D8D68E00BE0441 /* clustering.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = clustering.xcassets; path = "../../../../Downloads/cluster-images/clustering.xcassets"; sourceTree = "<group>"; };
-		70E4E90B23E1E6E00017E1A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		70A4606823E9D530008DBA35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		70E7254C23E8DEF90099C665 /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
 		70E7254F23E8E15C0099C665 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		70E7255123E8E3580099C665 /* restaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restaurantCell.swift; sourceTree = "<group>"; };
@@ -77,21 +77,29 @@
 		708B49D623D8C06A00BE0441 /* Map_Marker_Test */ = {
 			isa = PBXGroup;
 			children = (
+				70A4606A23E9D53E008DBA35 /* Views */,
 				70E7255323E8E7800099C665 /* Model */,
 				70E7254E23E8E1330099C665 /* Extensions-Utilities */,
 				708B49D723D8C06A00BE0441 /* AppDelegate.swift */,
 				708B49D923D8C06A00BE0441 /* SceneDelegate.swift */,
-				708B49DB23D8C06A00BE0441 /* ViewController.swift */,
-				70E7254C23E8DEF90099C665 /* RestaurantViewController.swift */,
 				70E7255123E8E3580099C665 /* restaurantCell.swift */,
 				708B49DD23D8C06A00BE0441 /* Main.storyboard */,
 				708B49E023D8C06B00BE0441 /* Assets.xcassets */,
 				708B49ED23D8D68E00BE0441 /* clustering.xcassets */,
 				708B49E223D8C06B00BE0441 /* LaunchScreen.storyboard */,
 				708B49E523D8C06B00BE0441 /* Info.plist */,
-				70E4E90B23E1E6E00017E1A7 /* GoogleService-Info.plist */,
+				70A4606823E9D530008DBA35 /* GoogleService-Info.plist */,
 			);
 			path = Map_Marker_Test;
+			sourceTree = "<group>";
+		};
+		70A4606A23E9D53E008DBA35 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				708B49DB23D8C06A00BE0441 /* ViewController.swift */,
+				70E7254C23E8DEF90099C665 /* RestaurantViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		70E7254E23E8E1330099C665 /* Extensions-Utilities */ = {
@@ -190,7 +198,7 @@
 			files = (
 				708B49E423D8C06B00BE0441 /* LaunchScreen.storyboard in Resources */,
 				708B49E123D8C06B00BE0441 /* Assets.xcassets in Resources */,
-				70E4E90C23E1E6E00017E1A7 /* GoogleService-Info.plist in Resources */,
+				70A4606923E9D530008DBA35 /* GoogleService-Info.plist in Resources */,
 				708B49DF23D8C06A00BE0441 /* Main.storyboard in Resources */,
 				708B49EF23D8D68E00BE0441 /* clustering.xcassets in Resources */,
 			);

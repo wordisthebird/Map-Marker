@@ -21,8 +21,11 @@ class RestaurantViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Local Restaurants"
+        //title = "This is a test"
+        //self.title = "some title"
         videos = fetchData()
+        
+        
         configureTableView()
     }
     
@@ -31,7 +34,7 @@ class RestaurantViewController: UIViewController {
         //set delgates and row height
         setDelegates()
         //set row height
-        tableView.rowHeight = 100
+        tableView.rowHeight = 130
         
         //register cells
         tableView.register(restaurantCell.self, forCellReuseIdentifier: Cells.restaurantCell)
@@ -56,17 +59,24 @@ extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource{
         let video = videos[indexPath.row]
         cell.set(video: video)
         
-        return UITableViewCell()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "goToNext", sender: self)
     }
 }
 
-extension RestaurantViewController{
+extension RestaurantViewController {
     func fetchData() -> [Video]{
+        print("Boomx")
         let video1 = Video(image: Images.flipside!,title: "Flipside")
         let video2 = Video(image: Images.belfry!,title: "The Belfry")
         let video3 = Video(image: Images.jalan!,title: "Jalan Jalan")
         let video4 = Video(image: Images.hooked!,title: "Hooked")
+        let video5 = Video(image: Images.ealabhan!,title: "Eala Bhan")
         
-        return [video1,video2,video3,video4]
+        print(video1.title)
+        return [video1,video2,video3,video4,video5]
     }
 }

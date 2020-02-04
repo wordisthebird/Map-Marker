@@ -10,9 +10,9 @@ import Firebase
 
 class ViewController: UIViewController {
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .darkContent
-    }
+    /*override var preferredStatusBarStyle: UIStatusBarStyle {
+     return .darkContent
+     }*/
     
     private var shouldReloadDataOnViewWillAppear: Bool = true
     let arImage = UIImageView(image: UIImage(named: "logo_pdf")!)
@@ -44,15 +44,15 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         
-
+        
         if shouldReloadDataOnViewWillAppear {
-           // your code for reloading data
+            // your code for reloading data
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2){
                 self.scaleDownAnimation()
             }
             shouldReloadDataOnViewWillAppear = false
         }
-
+        
         //shouldReloadDataOnViewWillAppear = true
         
         
@@ -144,7 +144,7 @@ class ViewController: UIViewController {
             pointAnnotations.append(point)
         }
         self.tabBarController?.tabBar.isHidden = false
-
+        
         mapView.addAnnotations(pointAnnotations)
     }
     
@@ -171,10 +171,11 @@ class ViewController: UIViewController {
         self.performSegue(withIdentifier: "goToNext", sender: self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
+    /*override func viewWillAppear(_ animated: Bool) {
+     super.viewWillAppear(animated)
+     navigationController?.setNavigationBarHidden(true, animated: animated)
+     }*/
+    
 }
 
 extension ViewController: MGLMapViewDelegate {

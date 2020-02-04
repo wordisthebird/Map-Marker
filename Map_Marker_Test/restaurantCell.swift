@@ -15,11 +15,13 @@ class restaurantCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         addSubview(restImageView)
         addSubview(restName)
         
         configureImageView()
         configureTitleLabel()
+        
         setImageConstraints()
         setTitleLabelConstraints()
     }
@@ -29,6 +31,7 @@ class restaurantCell: UITableViewCell {
     }
     
     func set(video: Video){
+        print("Set")
         restImageView.image = video.image
         restName.text = video.title
     }
@@ -36,6 +39,7 @@ class restaurantCell: UITableViewCell {
     func configureImageView(){
         restImageView.layer.cornerRadius = 10
         restImageView.clipsToBounds = true
+        //restImageView.contentMode = .scaleAspectFit
     }
     
     func configureTitleLabel(){
@@ -45,17 +49,18 @@ class restaurantCell: UITableViewCell {
     
     func setImageConstraints(){
         restImageView.translatesAutoresizingMaskIntoConstraints = false
+        restImageView.contentMode = .scaleAspectFit
         restImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        restImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-        restImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        restImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        restImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         restImageView.widthAnchor.constraint(equalTo: restImageView.heightAnchor, multiplier: 16/9).isActive = true
     }
     
     func setTitleLabelConstraints(){
         restName.translatesAutoresizingMaskIntoConstraints = false
         restName.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        restName.leadingAnchor.constraint(equalTo:   restName.trailingAnchor, constant: 20).isActive = true
-        restName.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        restName.leadingAnchor.constraint(equalTo: restImageView.trailingAnchor, constant: 20).isActive = true
+        restName.heightAnchor.constraint(equalToConstant: 100).isActive = true
         restName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
     }
 }
