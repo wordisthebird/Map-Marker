@@ -10,6 +10,11 @@ import Firebase
 
 class ViewController: UIViewController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+    
+    private var shouldReloadDataOnViewWillAppear: Bool = true
     let arImage = UIImageView(image: UIImage(named: "logo_pdf")!)
     let splashView = UIView()
     
@@ -22,7 +27,7 @@ class ViewController: UIViewController {
     var images: [UIImage] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBarController?.tabBar.isHidden = true
         splashView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
         
         view.addSubview(splashView)
@@ -38,9 +43,19 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2){
-            self.scaleDownAnimation()
+        
+
+        if shouldReloadDataOnViewWillAppear {
+           // your code for reloading data
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2){
+                self.scaleDownAnimation()
+            }
+            shouldReloadDataOnViewWillAppear = false
         }
+
+        //shouldReloadDataOnViewWillAppear = true
+        
+        
     }
     
     func scaleDownAnimation(){
@@ -116,7 +131,7 @@ class ViewController: UIViewController {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         mapView.centerCoordinate = CLLocationCoordinate2D(latitude: 54.2710154, longitude: -8.4715214)
-        mapView.zoomLevel = 13
+        mapView.zoomLevel = 15
         mapView.delegate = self
         view.addSubview(mapView)
         
@@ -128,7 +143,8 @@ class ViewController: UIViewController {
             point.coordinate = location
             pointAnnotations.append(point)
         }
-        
+        self.tabBarController?.tabBar.isHidden = false
+
         mapView.addAnnotations(pointAnnotations)
     }
     
@@ -153,6 +169,11 @@ class ViewController: UIViewController {
     func mapView(_ mapView: MGLMapView, tapOnCalloutFor annotation: MGLAnnotation) {
         //goToNext
         self.performSegue(withIdentifier: "goToNext", sender: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }
 
