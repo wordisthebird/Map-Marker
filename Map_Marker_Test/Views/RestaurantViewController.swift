@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Firebase
 
 class RestaurantViewController: UIViewController {
     
     var tableView = UITableView()
     var videos: [Video] = []
-    
+    var titles:[String] = []
+    var test: [Video] = []
+    var imagesOne : UIImage!
+    var name : String = ""
     
     struct Cells {
         static let restaurantCell = "restaurantCell"
@@ -21,12 +25,20 @@ class RestaurantViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //title = "This is a test"
-        //self.title = "some title"
-        videos = fetchData()
         
+        //videos = fetchData()
         
-        configureTableView()
+        fetchData { (done) in
+            
+            if done {
+                self.videos = self.test
+                self.configureTableView()
+            } else {
+                // Handle this somehow
+            }
+        }
+        //fetchData()
+        //configureTableView()
     }
     
     func configureTableView(){
@@ -46,6 +58,8 @@ class RestaurantViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    
 }
 
 extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource{
@@ -68,15 +82,39 @@ extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 extension RestaurantViewController {
-    func fetchData() -> [Video]{
-        print("Boomx")
-        let video1 = Video(image: Images.flipside!,title: "Flipside")
-        let video2 = Video(image: Images.belfry!,title: "The Belfry")
-        let video3 = Video(image: Images.jalan!,title: "Jalan Jalan")
-        let video4 = Video(image: Images.hooked!,title: "Hooked")
-        let video5 = Video(image: Images.ealabhan!,title: "Eala Bhan")
+    
+    
+    func fetchData(completion: @escaping (Bool) -> ()){
         
-        print(video1.title)
-        return [video1,video2,video3,video4,video5]
+        let db = Firestore.firestore()
+        
+        db.collection("Restaurants").getDocuments { (snapshot, err) in
+            
+            if let err = err {
+                print("Error getting documents: \(err)")
+                return
+            } else {
+                for document in snapshot!.documents {
+                    
+                    
+                    
+                    self.name = document.get("Name") as! String
+                    
+                    // do your remaining work
+                    //let url1 = URL(string: "https://\(self.restaurauntName)-space.s3-eu-west-1.amazonaws.com/one.png")
+                    let url1 = URL(string: "https://restaurantsspace.s3-eu-west-1.amazonaws.com/\(self.name).jpg")
+                    let data1 = try? Data(contentsOf: url1!) //make sure your image in this url does exist
+                    
+                    self.imagesOne = UIImage(data: data1!)
+                    
+                    let video1 = Video(image: self.imagesOne,title: self.name)
+                    
+                    self.test.append(video1)
+                }
+                //self.dowloadPhoto()
+                completion(true)
+                
+            }
+        }
     }
 }

@@ -15,7 +15,6 @@ class restaurantCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         addSubview(restImageView)
         addSubview(restName)
         
@@ -24,6 +23,7 @@ class restaurantCell: UITableViewCell {
         
         setImageConstraints()
         setTitleLabelConstraints()
+        
     }
     
     required init?(coder: NSCoder) {

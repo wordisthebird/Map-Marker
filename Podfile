@@ -10,6 +10,7 @@ target 'Map_Marker_Test' do
 pod 'Mapbox-iOS-SDK', '~> 5.6'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
+pod 'FirebaseStorage'
 pod 'Firebase/Core'
 pod 'Firebase/Firestore'
 # Optionally, include the Swift extensions if you're using Swift.

@@ -225,6 +225,10 @@ PODS:
     - FirebaseInstallations (~> 1.0)
     - GoogleUtilities/Environment (~> 6.5)
     - GoogleUtilities/UserDefaults (~> 6.5)
+  - FirebaseStorage (3.5.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleAppMeasurement (6.2.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -269,6 +273,7 @@ PODS:
     - gRPC-Core/Interface (= 1.21.0)
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
+  - GTMSessionFetcher/Core (1.3.1)
   - leveldb-library (1.22)
   - Mapbox-iOS-SDK (5.6.1):
     - MapboxMobileEvents (= 0.10.2)
@@ -285,6 +290,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - FirebaseFirestoreSwift
+  - FirebaseStorage
   - Mapbox-iOS-SDK (~> 5.6)
 
 SPEC REPOS:
@@ -302,12 +308,14 @@ SPEC REPOS:
     - FirebaseFirestoreSwift
     - FirebaseInstallations
     - FirebaseInstanceID
+    - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
+    - GTMSessionFetcher
     - leveldb-library
     - Mapbox-iOS-SDK
     - MapboxMobileEvents
@@ -328,18 +336,20 @@ SPEC CHECKSUMS:
   FirebaseFirestoreSwift: 0437bb10d83f8161a9131da1739998254c78fdf5
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
   FirebaseInstanceID: 6668efc1655a4052c083f287a7141f1ead12f9c2
+  FirebaseStorage: 6c5263796af3b1be82ed173598aade47535fe125
   GoogleAppMeasurement: a08a43b8677b95ed51fcef880e36737334d804fd
   GoogleDataTransport: 574a983e829327d7c18f2627f65d9e80164ea8a4
   GoogleDataTransportCCTSupport: cad3cd6cdbdbad6b5c2c9206ec413402755faaaa
   GoogleUtilities: f8de7ddf8c706f58e9b405d53e38bbdaa2731e5a
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
+  GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   Mapbox-iOS-SDK: b31bd62a5dd5b7e688eab787acd3d093a122f4d6
   MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
 
-PODFILE CHECKSUM: f34bcc72e8d4768952c154392bda0ae2fc61b3d7
+PODFILE CHECKSUM: 0093d6a18c18a27a50cb2081b3cb013abc31cb07
 
 COCOAPODS: 1.8.4

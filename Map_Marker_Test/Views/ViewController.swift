@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     /*override var preferredStatusBarStyle: UIStatusBarStyle {
      return .darkContent
      }*/
-    
+    var titles:[String] = []
     private var shouldReloadDataOnViewWillAppear: Bool = true
     let arImage = UIImageView(image: UIImage(named: "logo_pdf")!)
     let splashView = UIView()
@@ -105,23 +105,13 @@ class ViewController: UIViewController {
                     self.locationsList.append(coordinate)
                 }
                 
-                for x in self.names{
-                    print("Names: ",x)
-                }
-                
-                for y in self.coordinates{
-                    print("Coordinates: ",y)
-                }
-                
-                for z in self.locationsList{
-                    print("Coordinates: ",z)
-                }
-                
-                
                 self.secondfunction()
             }
         }
     }
+    
+    
+        
     
     func thirdFunction()
     {
@@ -146,6 +136,7 @@ class ViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         
         mapView.addAnnotations(pointAnnotations)
+        
     }
     
     func secondfunction() {

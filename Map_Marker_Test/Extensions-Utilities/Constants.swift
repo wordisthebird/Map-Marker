@@ -9,9 +9,9 @@
 import UIKit
 
 struct Images{
-    static let hooked = UIImage(named: "hooked_large")
-    static let flipside = UIImage(named: "FlipsideLarge")
-    static let belfry = UIImage(named: "belfry_large")
+    static let hooked = UIImage(named: "hooked")
+    static let flipside = UIImage(named: "flipside_resize")
+    static let belfry = UIImage(named: "belfry")
     static let jalan = UIImage(named: "jalan_jalan_large")
     static let ealabhan = UIImage(named: "Eala Bhan")
     

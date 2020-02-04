@@ -7,17 +7,29 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Restaurants-->
+        <!--Local Restaurants-->
         <scene sceneID="2JO-uX-GY3">
             <objects>
                 <viewController id="Ud3-se-K2o" customClass="RestaurantViewController" customModule="Map_Marker_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S6B-N7-pke">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUS-50-ltj">
+                                <rect key="frame" x="147.5" y="435" width="119.5" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bUS-50-ltj" firstAttribute="centerX" secondItem="S6B-N7-pke" secondAttribute="centerX" id="Of6-cz-Clh"/>
+                            <constraint firstItem="bUS-50-ltj" firstAttribute="centerY" secondItem="S6B-N7-pke" secondAttribute="centerY" id="rXW-SH-ajo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="OQ8-Qh-w1W"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Restaurants" image="food" id="dpq-CV-GBQ"/>
+                    <tabBarItem key="tabBarItem" title="Local Restaurants" image="food" id="dpq-CV-GBQ"/>
                     <connections>
                         <segue destination="lNv-1z-NVG" kind="show" identifier="goToNext" id="Hev-jf-2hL"/>
                     </connections>
