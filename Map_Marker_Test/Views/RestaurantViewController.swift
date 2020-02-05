@@ -26,6 +26,8 @@ class RestaurantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //self.title = "Your View controller title"
+        
         //videos = fetchData()
         
         fetchData { (done) in
@@ -79,6 +81,11 @@ extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "goToNext", sender: self)
     }
+    /* func tableView(_ tableView: UITableView, titleForHeaderInSection section:Int) -> String?
+     {
+     
+     return "Students"
+     }*/
 }
 
 extension RestaurantViewController {
@@ -100,14 +107,20 @@ extension RestaurantViewController {
                     
                     self.name = document.get("Name") as! String
                     
+                    //remove the underscore from name
+                    let str2 = self.name.replacingOccurrences(of: "_", with: " ", options:
+                        NSString.CompareOptions.literal, range: nil)
+                    
+                    
+                    print("New name: ", str2)
+                    
                     // do your remaining work
-                    //let url1 = URL(string: "https://\(self.restaurauntName)-space.s3-eu-west-1.amazonaws.com/one.png")
                     let url1 = URL(string: "https://restaurantsspace.s3-eu-west-1.amazonaws.com/\(self.name).jpg")
                     let data1 = try? Data(contentsOf: url1!) //make sure your image in this url does exist
                     
                     self.imagesOne = UIImage(data: data1!)
                     
-                    let video1 = Video(image: self.imagesOne,title: self.name)
+                    let video1 = Video(image: self.imagesOne,title: str2)
                     
                     self.test.append(video1)
                 }

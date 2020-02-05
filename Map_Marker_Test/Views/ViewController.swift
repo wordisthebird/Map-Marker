@@ -96,7 +96,7 @@ class ViewController: UIViewController {
             } else {
                 for document in snapshot!.documents {
                     let name = document.get("Name") as! String
-                    
+
                     let coordinate = document.get("Coordinates") as! GeoPoint
                     
                     self.names.append(name)
@@ -161,11 +161,6 @@ class ViewController: UIViewController {
         //goToNext
         self.performSegue(withIdentifier: "goToNext", sender: self)
     }
-    
-    /*override func viewWillAppear(_ animated: Bool) {
-     super.viewWillAppear(animated)
-     navigationController?.setNavigationBarHidden(true, animated: animated)
-     }*/
     
 }
 
